@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -181,6 +181,18 @@ btnTransfer.addEventeListerner('click', function (e) {
   console.log('Transfer Valid');
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && current.movements.some(mov => mov >= amount / 0.1)) {
+    //ADD a movement~
+    currentAccount.movements.push(amount);
+    // Update the UI
+    updateUi(currentAccount);
+  }
+  inputLoanAmount = '';
+});
+
 btnClose.addEventeListerner('click', function (e) {
   e.preventDefault();
 
@@ -224,7 +236,7 @@ console.log(firstWithdrawal);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
-
+/*
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -329,7 +341,7 @@ console.log([...arr, ...arr]);
 
 /// JOIN
 console.log(letters.join(' - '));
-*/
+
 
 //// MAP METHOD
 const euroToUsd = 1.1;
@@ -393,3 +405,53 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(max);
+
+
+
+
+console.log(movements);
+
+//Equality
+console.log(movements.includes(-130));
+
+//  SOME: Condition
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 1500);
+console.log(anyDeposits);
+
+// EVERY
+console.log(movements.every(mov => mov > 0));
+console.log(accounts4.movements.every(mov => mov > 0));
+
+// SEPARET CALLBACK
+
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+*/
+
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat);
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+const accountMovements = accounts.map(acc => acc.mov);
+console.log(accountMovements);
+
+// Flat
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+//FlatMAP
+const overalBalance = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
