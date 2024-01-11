@@ -1,9 +1,10 @@
 'use strict';
-/*
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -61,9 +62,11 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements__row">
@@ -215,9 +218,16 @@ btnClose.addEventeListerner('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movemets, !sorted);
+  sorted = !sorted;
+});
+
 // const euroToUsd = 1.1;
 //PIPELINE
-
+/*
 const totalDepositsUsd = movements
   .filter(mov => mov > 0)
   .map((mov, i, arr) => {
@@ -236,7 +246,7 @@ console.log(firstWithdrawal);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
-/*
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -430,7 +440,7 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
-*/
+
 
 //const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -444,7 +454,7 @@ const accountMovements = accounts.map(acc => acc.mov);
 console.log(accountMovements);
 
 // Flat
-const overalBalance = accounts
+const overalBalance = accounta
   .map(acc => acc.movements)
   .flat()
   .reduce((acc, mov) => acc + mov, 0);
@@ -455,3 +465,60 @@ const overalBalance = accounts
   .flatMap(acc => acc.movements)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overalBalance);
+/*
+/// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+
+// Numbers
+console.log(movements);
+
+//return < 0, A, B (keep order)
+//return > 0, B, A  (switch order)
+//Ascending order
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (b > a) return -1;
+// // });
+movements.sort((a, b) => a - b);
+//Descending order
+// // movements.sort((a, b) => {
+// //   if (a > b) return -1;
+// //   if (b > a) return 1;
+// // });
+movements.sort((a, b) => b - a);
+console.log(movements);
+*/
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+// Array constructer function
+
+const x = new Array(7);
+console.log(x);
+// console.log(x.map(() =>5));
+// x.fill(1);
+x.fill(1, 3, 5);
+x.fill(1);
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
+
+// Array.from
+Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements_value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI.map);
+});
+
+///Also cretes the Array bur then have to do the mapping
+movementsUI2 = [...document.querySelectorAll('.movements_value')];

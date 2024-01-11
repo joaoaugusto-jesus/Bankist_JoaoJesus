@@ -21,79 +21,286 @@
 // const dogsjulia = [3, 5, 2, 12, 7];
 // const dogsKate = [9, 16, 6, 8, 3];
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCorrected = dogsJulia;
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCorrected = dogsJulia;
 
-  dogsJuliaCorrected.splice(0, 1);
-  dogsJuliaCorrected.splice(-2);
+//   dogsJuliaCorrected.splice(0, 1);
+//   dogsJuliaCorrected.splice(-2);
 
-  const mergedAges = dogsJuliaCorrected.concat(dogsKate);
+//   const mergedAges = dogsJuliaCorrected.concat(dogsKate);
 
-  mergedAges.forEach(function (data, index) {
-    if (data > 3) {
-      console.log(
-        `Dog number ${index + 1} is an adult, and is ${data} years old`
-      );
-    } else {
-      console.log(`"Dog number ${index + 1} is still a puppy 🐶`);
-    }
-  });
-};
+//   mergedAges.forEach(function (data, index) {
+//     if (data > 3) {
+//       console.log(
+//         `Dog number ${index + 1} is an adult, and is ${data} years old`
+//       );
+//     } else {
+//       console.log(`"Dog number ${index + 1} is still a puppy 🐶`);
+//     }
+//   });
+// };
 
-checkDogs([3, 5, 2, 12, 7], [3, 5, 2, 12, 7]);
+// checkDogs([3, 5, 2, 12, 7], [3, 5, 2, 12, 7]);
 
+// /*
+
+// const kateData1 = [4, 1, 15, 8, 3];
+// const kateData2 = [10, 5, 6, 1, 4];
+
+// const dogAge = (function (juliaData1) {
+//   juliaData1.forEach(function (data, i, arr) {
+//     if(juliaData1>3) {console.log('The dog is an adult');
+//   }
+//   else {console.log('The dog is a puppy');
+//   }
+//   })
+// };
+// */
+
+// // Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
+
+// // Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does the following things in order:
+
+// // 1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
+// // 2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
+// // 3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
+// // 4. Run the function for both test datasets
+
+// // TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+// // TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+// // convert dog ages to human ages
+// // calculate the average age of dogs
+// /*
+// const calcAverageHumanAge = function (ages) {
+//   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+//   const adults = humanAges.filter(age => age >= 18);
+//   console.log(humanAges);
+//   console.log(adults);
+
+//   // const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
+//   const average = adults.reduce(
+//     (acc, age, i, arr) => acc + age / arr.length,
+//     0
+//   );
+//   return average;
+// };*/
+
+// const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+// /*
+// /// Coding Challenge 3
+
+// Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+// const calcAverageHumanAge = ages => ages.map (age => ((age <= 2 ? 2 * age : 16 + age * 4) )).filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);  */
+// //1
+// const BankdepositSum = accounts
+//   .flatmap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, cur) => sum + cur, 0);
+// console.log(bankDepositSum);
+
+// //2
+// // const numDeposit1000 = account
+// //   .flatmap(acc => acc.movements)
+// //   .filter(mov => mov >= 1000).length;
+// 0;
+// const numDeposit1000 = accounts
+//   .flatmap(acc => acc.movements)
+//   // .reduce((count, curr) => (cur >= 1000 ? count + 1 : count), 0);
+//   .reduce((count, curr) => (cur >= 1000 ? ++count : count), 0);
+
+// console.log(numDeposit1000); //Prefixed operator
+// let a = 1;
+// console.log(a++);
+// console.log(a);
+
+// //3
+// const { deposits, withdrawal } = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       //cur > 0 ? (sums.deposits += cur) : (sum.withdrawals += cur);
+//       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//       return sums;
+//     },
+
+//     { deposits: 0, withdrawal: 0 }
+//   );
+// console.log(deposits, withdrawals);
+
+// //4
+// // this is a nice title --> This Is A Nice Title
+// const convertTitleCase = function (title) {
+//   const capitalize = str => word(0).toUpperCase() + str.slice(1);
+//   const expectations = [
+//     'a',
+//     'an',
+//     'and',
+//     'the',
+//     'but',
+//     'or',
+//     'on',
+//     'in',
+//     'with',
+//   ];
+
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word => (exceptions.inclueds(word) ? word : capitalize(word)))
+//     .join(' ');
+//   return capitalize(titleCase);
+// };
+// console.log(convertTitleCase('This is a nice title'));
+// console.log(convertTitleCase('This is a LONG title but not to long'));
+// console.log(convertTitleCase('This is a nice title with an EXAMPLE'));
 /*
 
 
-const kateData1 = [4, 1, 15, 8, 3];
-const kateData2 = [10, 5, 6, 1, 4];
+//Challenge #4
+Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
+Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite.
+Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion (see hint).
 
-const dogAge = (function (juliaData1) {
-  juliaData1.forEach(function (data, i, arr) {
-    if(juliaData1>3) {console.log('The dog is an adult');
-  }
-  else {console.log('The dog is a puppy');
-  }
-  })
-};
+1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Formula: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
+6. Log to the console whether there is any dog eating an OKAY amount of food (just true or false)
+7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the array's objects)
+
+HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
+HINT 2: Being within a range 10% above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
+GOOD LUCK 😀
 */
 
-// Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
 
-// Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does the following things in order:
+// Challenge #4 with JOnas
 
-// 1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
-// 2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
-// 3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
-// 4. Run the function for both test datasets
+//1.
+dogs.forEach(dog => (dog.recFood = Math.trunc.dog.weight ** 0.75 * 28));
+console.log(dogs);
+//2.
+dogSarah = dogs.find(dog => dog.owners.includes(Sarah));
+console.log(dogSarah);
+console.log(
+  `Sarah's dog is eating too${
+    dogsarah.curFood > dogSarah.recFood ? 'much' : 'little'
+  }`
+);
+//3.
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .flatmap(dog => dog.owners);
+console.log(ownersEatTooMuch);
 
-// TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
-// TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .flatmap(dog => dog.owners);
+console.log(ownersEatTooLittle);
 
-// convert dog ages to human ages
-// calculate the average age of dogs
+//4.
+console.log(`${ownersEatTooMuch.join}(' and ')'s eat too much!`);
+console.log(`${ownersEatTooLittle.join}(' and ')'s eat too little!`);
+///5
+console.log(dogs.some(dog => dog.curFood === recFood));
+
+///6
+//current > recommended * 0.9 && current < recommended * 1.1;
+const checkEatingOkay = dog =>
+  dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1;
+console.log(dogs.some(checkEatingOkay));
+
+///7
+console.log(dogs.filter(checkEatingOkay));
+
+///8
+const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+console.log(dogsSorted);
+
+/////Challengue 4 with MAuro
+// = weight ** 0.75 * 28;
+//1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Formula: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
 /*
-const calcAverageHumanAge = function (ages) {
-  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
-  const adults = humanAges.filter(age => age >= 18);
-  console.log(humanAges);
-  console.log(adults);
+let ownersEatTooMuch = [];
+let ownersEatTooLittle = [];
 
-  // const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
-  const average = adults.reduce(
-    (acc, age, i, arr) => acc + age / arr.length,
-    0
-  );
-  return average;
-};*/
+let anyDogEatingOk = false;
+let doesnAnyDogEatExactly = false;
 
-const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+dogs.forEach(function (value, index, arr) {
+  const recommendedFood = value.weight ** 0.75 * 28;
+  value.recommendedFood = recommendedFood;
 
-/*
-/// Coding Challenge 3
+  const maxFood = recommendedFood + recommendedFood * 0.1;
+  const minFood = recommendedFood - recommendedFood * 0.1;
 
+  const dogEatsTooMuch = !(value.curFood <= maxFood);
+  const dogEatsLess = !(value.curFood >= minFood);
 
-Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+  if (value.curFood === recommendedFood) {
+    doesnAnyDogEatExactly = true;
+  }
 
-const calcAverageHumanAge = ages => ages.map (age => ((age <= 2 ? 2 * age : 16 + age * 4) )).filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);  */
+  if (dogEatsTooMuch) {
+    value.owners.forEach(val => {
+      ownersEatTooMuch.push(val);
+    });
+
+    //"Matilda and Alice and Bob's dogs eat too much!"
+  } else if (dogEatsLess) {
+    value.owners.forEach(val => {
+      ownersEatTooLittle.push(val);
+    });
+  } else {
+    anyDogEatingOk = true;
+  }
+
+  let isSarahsDog = value.owners.includes('Sarah');
+
+  if (isSarahsDog) {
+  }
+});
+
+let eatTooMuchInitialString = '';
+let eatTooLittleInitialString = '';
+
+ownersEatTooMuch.forEach((val, index, arr) => {
+  const isLastIndex = index == arr.length - 1;
+
+  if (isLastIndex) {
+    eatTooMuchInitialString = eatTooMuchInitialString + val;
+  } else {
+    eatTooMuchInitialString = eatTooMuchInitialString + val + ' and ';
+  }
+});
+
+ownersEatTooLittle.forEach((val, index, arr) => {
+  const isLastIndex = index == arr.length - 1;
+
+  if (isLastIndex) {
+    eatTooLittleInitialString = eatTooLittleInitialString + val;
+  } else {
+    eatTooLittleInitialString = eatTooLittleInitialString + val + ' and ';
+  }
+});
+
+console.log(eatTooMuchInitialString + 's dogs eat too much!');
+console.log(eatTooLittleInitialString + 's dogs dont eat enough!');
+
+console.log(ownersEatTooMuch);
+console.log(ownersEatTooLittle);
+console.log(anyDogEatingOk);
+console.log(doesnAnyDogEatExactly);
+*/
